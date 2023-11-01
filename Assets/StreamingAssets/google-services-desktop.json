@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "884151050232",
+    "project_id": "areducation-1f436",
+    "storage_bucket": "areducation-1f436.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:884151050232:android:f25890088506e9b39e400d",
+        "android_client_info": {
+          "package_name": "com.assignment.AReducation"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1GeANRb24wgaglHOF0pNWO7-Bzi6vslg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
+  m_Name: wordimagelibrary
+  m_EditorClassIdentifier: 
+  m_GuidLow: 5584509257201095328
+  m_GuidHigh: 16977223711355487910
+  m_DataStore:
+    m_Storage: []
+  m_Images:
+  - m_SerializedGuid:
+      m_GuidLow: 5453559277333578873
+      m_GuidHigh: 16312774502143382149
+    m_SerializedTextureGuid:
+      m_GuidLow: 9814665508406004173
+      m_GuidHigh: 351829302021688
+    m_Size: {x: 0.4, y: 0.23219512}
+    m_SpecifySize: 1
+    m_Name: Watermelon
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4745306415599980322
+      m_GuidHigh: 16681334921697779903
+    m_SerializedTextureGuid:
+      m_GuidLow: 5103931070055560904
+      m_GuidHigh: 2332472089167414410
+    m_Size: {x: 0.4, y: 0.2329527}
+    m_SpecifySize: 1
+    m_Name: Coffee
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5013466326364627026
+      m_GuidHigh: 2882883923209283494
+    m_SerializedTextureGuid:
+      m_GuidLow: 18029189910812948375
+      m_GuidHigh: 3780620511929000793
+    m_Size: {x: 0.4, y: 0.23333333}
+    m_SpecifySize: 1
+    m_Name: Butterfly
+    m_Texture: {fileID: 0}
