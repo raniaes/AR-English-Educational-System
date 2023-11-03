@@ -59,12 +59,14 @@ public class FirestoreAuth : MonoBehaviour
                             {
                                 PlayerPrefs.SetString("PlayerID", ID);
                                 PlayerPrefs.Save();
+                                Debug.Log("Learner Login Success.");
                                 SceneManager.LoadScene("studentmain", LoadSceneMode.Single);
                             }
                             else
                             {
                                 PlayerPrefs.SetString("PlayerID", ID);
                                 PlayerPrefs.Save();
+                                Debug.Log("Educator Login Success.");
                                 SceneManager.LoadScene("teachermain", LoadSceneMode.Single);
                             }
                         }
