@@ -14,11 +14,18 @@ public class AnchorCreator : MonoBehaviour
 
     public GameObject soundbtn;
     public GameObject speechbtn;
+    private float initialBatteryLevel;
 
     public GameObject AnchorPrefab
     {
         get => m_AnchorPrefab;
         set => m_AnchorPrefab = value;
+    }
+
+    void Start()
+    {
+        // 앱이 시작될 때 현재 배터리 레벨을 저장
+        initialBatteryLevel = UnityEngine.SystemInfo.batteryLevel;
     }
 
     public void RemoveAllAnchors()
@@ -70,6 +77,12 @@ public class AnchorCreator : MonoBehaviour
             else
             {
                 m_AnchorPoints.Add(anchor);
+
+                float frameRate = 1.0f / Time.deltaTime;
+                Debug.Log("Frame Rate: " + frameRate);
+
+                float batteryUsage = UnityEngine.SystemInfo.batteryLevel - initialBatteryLevel;
+                Debug.Log("Battery Usage: " + batteryUsage);
 
                 // AR 오브젝트가 생성될 때 버튼 활성화
                 if (soundbtn != null) 

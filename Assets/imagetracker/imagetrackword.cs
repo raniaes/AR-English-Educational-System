@@ -87,8 +87,10 @@ public class imagetrackword : MonoBehaviour
         {
             if (!_trackedImg.Contains(trackedImage))
             {
+                Debug.Log("recognetion");
                 _trackedImg.Add(trackedImage);
                 //_trackedtimer.Add(0);
+                
             }
         }
 
@@ -96,6 +98,7 @@ public class imagetrackword : MonoBehaviour
         {
             if (!_trackedImg.Contains(trackedImage))
             {
+                Debug.Log("recognetion");
                 _trackedImg.Add(trackedImage);
                 //_trackedtimer.Add(0);
             }
@@ -127,5 +130,6 @@ public class imagetrackword : MonoBehaviour
         tObj.transform.position = trackedImage.transform.position;
         tObj.transform.rotation = trackedImage.transform.rotation;
         tObj.SetActive(true);
+        Debug.Log("creation object");
     }
 }

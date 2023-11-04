@@ -50,11 +50,11 @@ public class wordtomain : MonoBehaviour
         {
             if (task.IsCompleted)
             {
-                Debug.Log($"{content} 필드 추가 또는 업데이트 완료.");
+                Debug.Log($"{content} filed add or update complete.");
             }
             else if (task.IsFaulted)
             {
-                Debug.LogError($"{content} 필드 추가 또는 업데이트 중 오류 발생: " + task.Exception);
+                Debug.LogError($"{content} filed add or update fail: " + task.Exception);
             }
         });
 
