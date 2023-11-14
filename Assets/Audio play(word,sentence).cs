@@ -9,7 +9,6 @@ public class AudioPlayOnClick : MonoBehaviour
 
     void Start()
     {
-        // AudioSource 컴포넌트 가져오기
         audioSource = GetComponent<AudioSource>();
     }
 

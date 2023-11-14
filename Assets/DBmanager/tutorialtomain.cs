@@ -38,13 +38,11 @@ public class tutorialtomain : MonoBehaviour
 
             if (snapshot.Exists)
             {
-                // DocumentSnapshot을 딕셔너리로 변환
                 Dictionary<string, object> userData = snapshot.ToDictionary();
 
                 if (userData.TryGetValue("usertype", out object usertypeObj))
                 {
                     bool usertype = (bool)usertypeObj;
-                    // password 비교 및 로그인 화면 전환
                     if (!usertype)
                     {
                         SceneManager.LoadScene("studentmain", LoadSceneMode.Single);

@@ -58,7 +58,6 @@ public class STTSquestion : MonoBehaviour, STTSCallback
         {
             if (result.ToLower() == answer.ToLower())
             {
-                // 다음 음성 출력을 여기에 추가하세요.
                 sttResultText.text = answer;
                 sttResultText.color = Color.green;
                 Debug.Log("User asked for coffee. Playing next audio...");
@@ -66,7 +65,6 @@ public class STTSquestion : MonoBehaviour, STTSCallback
             }
             else
             {
-                // 다른 음성 출력을 여기에 추가
                 sttResultText.text = result;
                 sttResultText.color = Color.red;
 

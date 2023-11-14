@@ -17,7 +17,6 @@ public class wordtomain : MonoBehaviour
 
     private void Start()
     {
-        // Firebase 초기화 및 Firestore 인스턴스 가져오기
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
         {
             FirebaseApp app = FirebaseApp.DefaultInstance;
@@ -45,7 +44,6 @@ public class wordtomain : MonoBehaviour
             { content, speechtext.color == Color.green }
         };
 
-        // SetAsync 메서드를 사용하여 필드를 추가하거나 업데이트합니다.
         userRef.SetAsync(updates, SetOptions.MergeAll).ContinueWithOnMainThread(task =>
         {
             if (task.IsCompleted)

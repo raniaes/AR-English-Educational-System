@@ -19,15 +19,15 @@ public class STTSsenario : MonoBehaviour, STTSCallback
     private string answer1;
     private string answer2;
 
-    public ARSessionOrigin arSessionOrigin; // ARSessionOrigin 참조 변수
+    public ARSessionOrigin arSessionOrigin;
 
-    private ARRaycastManager raycastManager; // ARRaycastManager 참조 변수
-    private List<ARRaycastHit> hits = new List<ARRaycastHit>(); // 레이캐스트 히트 결과를 저장할 리스트
+    private ARRaycastManager raycastManager;
+    private List<ARRaycastHit> hits = new List<ARRaycastHit>();
 
     private Vector2 screenCenter;
 
-    public GameObject coffeePrefab; // 커피를 나타낼 AR 오브젝트 프리팹
-    private GameObject spawnedCoffee; // AR 오브젝트에 대한 참조 변수
+    public GameObject coffeePrefab;
+    private GameObject spawnedCoffee;
 
     void Start()
     {
@@ -69,7 +69,6 @@ public class STTSsenario : MonoBehaviour, STTSCallback
         audioSource.clip = audioClip2;
         audioSource.Play();
 
-        // audioClip2가 끝난 후 StartSTT 이벤트를 호출
         Invoke("StartSTT", audioClip2.length + 0.5f);
     }
 
@@ -89,11 +88,8 @@ public class STTSsenario : MonoBehaviour, STTSCallback
         {
             if (result.ToLower() == answer1.ToLower())
             {
-                // 사용자가 "can I get a coffee"라고 말하면 원하는 음성 출력을 실행
-                // 다음 음성 출력을 여기에 추가하세요.
                 sttResultText.color = Color.green;
                 Debug.Log("User asked for coffee. Playing next audio...");
-                // 다음 음성 출력 코드 추가
                 Invoke("PlayAudioClip3", 0.5f);
             }
             else if (result.ToLower() == answer2.ToLower())
@@ -128,7 +124,6 @@ public class STTSsenario : MonoBehaviour, STTSCallback
         {
             var hitPose = hits[0].pose;
 
-            // AR 오브젝트 생성 및 화면 중앙 위치에 배치
             InstantiateCoffee(hitPose.position);
         }
     }
@@ -145,11 +140,9 @@ public class STTSsenario : MonoBehaviour, STTSCallback
     {
         if (coffeePrefab != null && arSessionOrigin != null)
         {
-            Vector3 coffeePosition = position + new Vector3(0f, 0f, -0.1f); // z축으로 -0.5만큼 이동
-            // AR 오브젝트를 월드에 생성하고 AR Session의 하위 항목으로 추가
+            Vector3 coffeePosition = position + new Vector3(0f, 0f, -0.1f);
             spawnedCoffee = Instantiate(coffeePrefab, coffeePosition, Quaternion.identity);
             spawnedCoffee.transform.SetParent(arSessionOrigin.transform);
-            // 추가적인 오브젝트 위치 및 설정 조정 가능
         }
     }
 
@@ -157,7 +150,6 @@ public class STTSsenario : MonoBehaviour, STTSCallback
     {
         if (spawnedCoffee != null)
         {
-            // AR 오브젝트 삭제 및 참조 해제
             Destroy(spawnedCoffee);
             spawnedCoffee = null;
         }

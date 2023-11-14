@@ -57,7 +57,6 @@ public class ARtutorial : MonoBehaviour
 
             var anchor = m_AnchorManager.AttachAnchor(hitPlane, hitPose);
 
-            // 삭제하기 전에 이전 오브젝트 삭제
             if (m_LastSpawnedObject != null)
             {
                 Destroy(m_LastSpawnedObject);
@@ -73,7 +72,6 @@ public class ARtutorial : MonoBehaviour
             {
                 m_AnchorPoints.Add(anchor);
 
-                // AR 오브젝트가 생성될 때 버튼 활성화
                 if (circle1 != null)
                 {
                     circle1.SetActive(true);
@@ -94,7 +92,7 @@ public class ARtutorial : MonoBehaviour
     static List<ARRaycastHit> s_Hits = new List<ARRaycastHit>();
 
     List<ARAnchor> m_AnchorPoints;
-    GameObject m_LastSpawnedObject; // 이전에 생성된 오브젝트를 추적하기 위한 변수
+    GameObject m_LastSpawnedObject;
 
     ARRaycastManager m_RaycastManager;
 

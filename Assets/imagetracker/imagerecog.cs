@@ -11,13 +11,11 @@ public class imagerecog : MonoBehaviour
 
     void OnEnable()
     {
-        // 이미지 트래킹 이벤트 리스너 등록
         m_TrackedImageManager.trackedImagesChanged += OnTrackedImagesChanged;
     }
 
     void OnDisable()
     {
-        // 리스너 해제
         m_TrackedImageManager.trackedImagesChanged -= OnTrackedImagesChanged;
     }
 

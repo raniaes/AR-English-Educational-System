@@ -10,22 +10,20 @@ using UnityEngine.SceneManagement;
 
 public class showstudent : MonoBehaviour
 {
-    public GameObject scrollViewContent; // ScrollView의 Content 오브젝트
-    public GameObject buttonPrefab; // Button 항목의 프리팹
+    public GameObject scrollViewContent;
+    public GameObject buttonPrefab;
     public Text ID;
 
     private FirebaseFirestore db;
 
     private void Start()
     {
-        // Firebase 초기화
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
         {
             FirebaseApp app = FirebaseApp.DefaultInstance;
             db = FirebaseFirestore.GetInstance(app);
 
-            // Firestore에서 데이터 가져오기
-            string teacherID = ID.text; // 선생님의 문서 ID를 여기에 입력
+            string teacherID = ID.text;
             DocumentReference teacherRef = db.Collection("teachers").Document(teacherID);
 
 
@@ -42,22 +40,21 @@ public class showstudent : MonoBehaviour
                             List<object> studentsList = data["students"] as List<object>;
                             List<string> students = studentsList.Cast<string>().ToList();
 
-                            // students 리스트를 ScrollView에 표시하는 함수 호출
                             UpdateScrollViewWithStudents(students);
                         }
                         else
                         {
-                            Debug.LogError("학생 목록이 데이터에 없습니다.");
+                            Debug.LogError("Don't exist student list");
                         }
                     }
                     else
                     {
-                        Debug.LogError("해당 선생님 문서가 존재하지 않습니다.");
+                        Debug.LogError("Don't exist teacher document");
                     }
                 }
                 else if (Task.IsFaulted)
                 {
-                    Debug.LogError("Firestore에서 데이터 가져오기 실패: " + Task.Exception);
+                    Debug.LogError("Falut: " + Task.Exception);
                 }
             });
         });

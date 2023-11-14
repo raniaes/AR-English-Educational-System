@@ -15,7 +15,6 @@ public class word2tomain : MonoBehaviour
 
     void Start()
     {
-        // Firebase 초기화 및 Firestore 인스턴스 가져오기
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
         {
             FirebaseApp app = FirebaseApp.DefaultInstance;
@@ -44,16 +43,15 @@ public class word2tomain : MonoBehaviour
             { "word2", word2check == 1 ? true : false }
         };
 
-        // SetAsync 메서드를 사용하여 필드를 추가하거나 업데이트합니다.
         userRef.SetAsync(updates, SetOptions.MergeAll).ContinueWithOnMainThread(task =>
         {
             if (task.IsCompleted)
             {
-                Debug.Log($"word2 필드 추가 또는 업데이트 완료.");
+                Debug.Log($"complete");
             }
             else if (task.IsFaulted)
             {
-                Debug.LogError($"word2 필드 추가 또는 업데이트 중 오류 발생: " + task.Exception);
+                Debug.LogError($"Fault: " + task.Exception);
             }
         });
 

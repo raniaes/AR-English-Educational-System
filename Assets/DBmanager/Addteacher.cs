@@ -26,7 +26,6 @@ public class Addteacher : MonoBehaviour
     {
         string teacherName = teacherNameInput.text;
 
-        // 선생님 이름으로 user 컬렉션에서 문서를 확인하고 usertype을 가져옵니다.
         DocumentReference userRef = db.Collection("user").Document(teacherName);
         userRef.GetSnapshotAsync().ContinueWithOnMainThread(Task =>
         {
@@ -40,7 +39,6 @@ public class Addteacher : MonoBehaviour
 
             if (snapshot.Exists)
             {
-                // DocumentSnapshot을 딕셔너리로 변환
                 Dictionary<string, object> userData = snapshot.ToDictionary();
 
                 if (userData.TryGetValue("usertype", out object usertypeObj))
@@ -62,12 +60,12 @@ public class Addteacher : MonoBehaviour
                         {
                             if (updateTask.IsCompleted)
                             {
-                                Debug.Log($"학생 {studentName}을(를) 추가했습니다.");
+                                Debug.Log($"student {studentName} add.");
                                 SceneManager.LoadScene("studentmain", LoadSceneMode.Single);
                             }
                             else if (updateTask.IsFaulted)
                             {
-                                Debug.LogError($"학생 추가 중 오류 발생: {updateTask.Exception}");
+                                Debug.LogError($"Fault: {updateTask.Exception}");
                             }
                         });
                     }

@@ -10,10 +10,10 @@ using UnityEngine.XR.ARSubsystems;
 public class Anchorsenario : MonoBehaviour
 {
     [SerializeField]
-    GameObject m_AnchorPrefab1; // 첫 번째 프리팹
+    GameObject m_AnchorPrefab1;
 
     [SerializeField]
-    GameObject m_AnchorPrefab2; // 두 번째 프리팹
+    GameObject m_AnchorPrefab2;
 
     public GameObject AnchorPrefab1
     {
@@ -62,7 +62,6 @@ public class Anchorsenario : MonoBehaviour
             var anchor1 = m_AnchorManager.AttachAnchor(hitPlane, hitPose);
             var anchor2 = m_AnchorManager.AttachAnchor(hitPlane, hitPose);
 
-            // 이전에 생성된 오브젝트 삭제
             if (m_LastSpawnedObject1 != null)
             {
                 Destroy(m_LastSpawnedObject1);
@@ -91,8 +90,8 @@ public class Anchorsenario : MonoBehaviour
     static List<ARRaycastHit> s_Hits = new List<ARRaycastHit>();
 
     List<ARAnchor> m_AnchorPoints;
-    GameObject m_LastSpawnedObject1; // 이전에 생성된 오브젝트를 추적하기 위한 변수 (첫 번째 오브젝트)
-    GameObject m_LastSpawnedObject2; // 이전에 생성된 오브젝트를 추적하기 위한 변수 (두 번째 오브젝트)
+    GameObject m_LastSpawnedObject1;
+    GameObject m_LastSpawnedObject2;
 
     ARRaycastManager m_RaycastManager;
 
@@ -113,10 +112,10 @@ using UnityEngine.XR.ARSubsystems;
 public class Anchorsenario : MonoBehaviour
 {
     [SerializeField]
-    GameObject m_AnchorPrefab1; // 첫 번째 프리팹
+    GameObject m_AnchorPrefab1;
 
     [SerializeField]
-    GameObject m_AnchorPrefab2; // 두 번째 프리팹
+    GameObject m_AnchorPrefab2;
 
     public GameObject startbtn;
 
@@ -160,7 +159,6 @@ public class Anchorsenario : MonoBehaviour
             var anchor1 = m_AnchorManager.AttachAnchor(hitPlane, hitPose);
             var anchor2 = m_AnchorManager.AttachAnchor(hitPlane, hitPose);
 
-            // 이전에 생성된 오브젝트 삭제
             if (m_LastSpawnedObject1 != null)
             {
                 Destroy(m_LastSpawnedObject1);
@@ -190,8 +188,8 @@ public class Anchorsenario : MonoBehaviour
     static List<ARRaycastHit> s_Hits = new List<ARRaycastHit>();
 
     List<ARAnchor> m_AnchorPoints;
-    GameObject m_LastSpawnedObject1; // 이전에 생성된 오브젝트를 추적하기 위한 변수 (첫 번째 오브젝트)
-    GameObject m_LastSpawnedObject2; // 이전에 생성된 오브젝트를 추적하기 위한 변수 (두 번째 오브젝트)
+    GameObject m_LastSpawnedObject1;
+    GameObject m_LastSpawnedObject2;
 
     ARRaycastManager m_RaycastManager;
 

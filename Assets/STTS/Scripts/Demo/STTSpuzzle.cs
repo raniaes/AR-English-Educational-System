@@ -53,16 +53,14 @@ public class STTSpuzzle : MonoBehaviour, STTSCallback
     {
         string[] shuffledWords = ShuffleArray(words);
 
-        // 단어를 무작위로 선택하여 문장 생성
         string sentence = "";
         for (int i = 0; i < shuffledWords.Length; i++)
         {
             sentence += shuffledWords[i] + " ";
         }
 
-        sentence = sentence.Trim(); // 문자열 앞뒤의 공백 제거
+        sentence = sentence.Trim();
 
-        // 생성한 문장과 answer 값을 비교하여 같은 경우 다시 생성
         while (sentence == answer)
         {
             shuffledWords = ShuffleArray(words);
@@ -77,7 +75,6 @@ public class STTSpuzzle : MonoBehaviour, STTSCallback
         return sentence;
     }
 
-    // 배열을 무작위로 섞는 함수
     private T[] ShuffleArray<T>(T[] array)
     {
         System.Random random = new System.Random();
@@ -107,7 +104,6 @@ public class STTSpuzzle : MonoBehaviour, STTSCallback
         {
             if (result.ToLower() == answer.ToLower())
             {
-                // 다음 음성 출력을 여기에 추가하세요.
                 sttResultText.text = answer;
                 sttResultText.color = Color.green;
                 Debug.Log("User asked for coffee. Playing next audio...");
@@ -115,7 +111,6 @@ public class STTSpuzzle : MonoBehaviour, STTSCallback
             }
             else
             {
-                // 다른 음성 출력을 여기에 추가
                 sttResultText.text = result;
                 sttResultText.color = Color.red;
 

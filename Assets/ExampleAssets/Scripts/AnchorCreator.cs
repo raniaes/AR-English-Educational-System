@@ -24,7 +24,6 @@ public class AnchorCreator : MonoBehaviour
 
     void Start()
     {
-        // 앱이 시작될 때 현재 배터리 레벨을 저장
         initialBatteryLevel = UnityEngine.SystemInfo.batteryLevel;
     }
 
@@ -62,7 +61,6 @@ public class AnchorCreator : MonoBehaviour
 
             var anchor = m_AnchorManager.AttachAnchor(hitPlane, hitPose);
 
-            // 삭제하기 전에 이전 오브젝트 삭제
             if (m_LastSpawnedObject != null)
             {
                 Destroy(m_LastSpawnedObject);
@@ -84,7 +82,6 @@ public class AnchorCreator : MonoBehaviour
                 float batteryUsage = UnityEngine.SystemInfo.batteryLevel - initialBatteryLevel;
                 Debug.Log("Battery Usage: " + batteryUsage);
 
-                // AR 오브젝트가 생성될 때 버튼 활성화
                 if (soundbtn != null) 
                 { 
                     soundbtn.SetActive(true);
@@ -100,7 +97,7 @@ public class AnchorCreator : MonoBehaviour
     static List<ARRaycastHit> s_Hits = new List<ARRaycastHit>();
 
     List<ARAnchor> m_AnchorPoints;
-    GameObject m_LastSpawnedObject; // 이전에 생성된 오브젝트를 추적하기 위한 변수
+    GameObject m_LastSpawnedObject;
 
     ARRaycastManager m_RaycastManager;
 

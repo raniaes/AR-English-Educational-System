@@ -25,7 +25,6 @@ public class getachievement : MonoBehaviour
 
     private FirebaseFirestore db;
 
-    // Start is called before the first frame update
     void Start()
     {
         wordach = new bool[2];
@@ -34,14 +33,12 @@ public class getachievement : MonoBehaviour
         quizach = new bool[1];
         puzzleach = new bool[1];
 
-        // Firebase 초기화
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
         {
             FirebaseApp app = FirebaseApp.DefaultInstance;
             db = FirebaseFirestore.GetInstance(app);
 
-            // Firestore에서 데이터 가져오기
-            string studentID = ID.text; // 학생 성취 문서 ID 입력
+            string studentID = ID.text;
             DocumentReference studentRef = db.Collection("achievement").Document(studentID);
 
 
@@ -68,7 +65,6 @@ public class getachievement : MonoBehaviour
                         }
                         else
                         {
-                            // wordObj가 bool 타입이 아닌 경우, 기본적으로 false로 처리
                             wordach[0] = false;
                         }
                     }
@@ -86,7 +82,6 @@ public class getachievement : MonoBehaviour
                         }
                         else
                         {
-                            // wordObj가 bool 타입이 아닌 경우, 기본적으로 false로 처리
                             wordach[1] = false;
                         }
                     }

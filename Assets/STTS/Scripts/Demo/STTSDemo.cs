@@ -68,12 +68,10 @@ public class STTSDemo : MonoBehaviour, STTSCallback
             //sttResultText.text = result;
             if (result.ToLower() == sttResultText.text.ToLower())
             {
-                // 텍스트가 같으면 초록색으로 변경
                 sttResultText.color = Color.green;
             }
             else
             {
-                // 텍스트가 다르면 빨강색으로 변경
                 sttResultText.color = Color.red;
                 //Invoke("STTEvent", 0.5f);
             }

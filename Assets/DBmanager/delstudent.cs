@@ -26,29 +26,24 @@ public class delstudent : MonoBehaviour
 
     public void ShowConfirmationPopup()
     {
-        // 팝업 창을 활성화합니다.
         confirmationPopup.SetActive(true);
     }
 
     public void CloseConfirmationPopup()
     {
-        // 팝업 창을 닫습니다.
         confirmationPopup.SetActive(false);
     }
 
     public void ConfirmDelete()
     {
-        // Yes 버튼을 누르면 실행되는 함수
-        CloseConfirmationPopup(); // 팝업 창을 닫습니다.
+        CloseConfirmationPopup();
 
-        // 삭제 작업 수행
         delstudentclick();
     }
 
     public void CancelDelete()
     {
-        // No 버튼을 누르면 실행되는 함수
-        CloseConfirmationPopup(); // 팝업 창을 닫습니다.
+        CloseConfirmationPopup();
     }
 
     public void delstudentclick()
@@ -58,7 +53,6 @@ public class delstudent : MonoBehaviour
 
         DocumentReference userRef = db.Collection("teachers").Document(ID);
 
-        // 해당 문서를 가져와서 students 배열을 업데이트합니다.
         userRef.GetSnapshotAsync().ContinueWithOnMainThread(task =>
         {
             if (task.IsFaulted)
@@ -71,18 +65,14 @@ public class delstudent : MonoBehaviour
 
             if (snapshot.Exists)
             {
-                // DocumentSnapshot을 딕셔너리로 변환
                 Dictionary<string, object> teacherData = snapshot.ToDictionary();
 
                 if (teacherData.TryGetValue("students", out object studentsObj))
                 {
                     List<object> studentsList = studentsObj as List<object>;
 
-                    // 학생을 삭제할 조건을 설정하세요.
-                    // 예를 들어, studentID를 삭제하려면 다음과 같이 학생을 제거할 수 있습니다.
                     studentsList.Remove(studentID);
 
-                    // students 배열을 업데이트합니다.
                     Dictionary<string, object> updates = new Dictionary<string, object>
                 {
                     { "students", studentsList }

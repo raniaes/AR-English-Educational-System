@@ -28,7 +28,6 @@ public class FirestoreAuth : MonoBehaviour
         string password = passwordInput.text;
         bool usertype;
 
-        // Firestore에서 사용자 정보 가져오기
         DocumentReference userRef = db.Collection("user").Document(ID);
         userRef.GetSnapshotAsync().ContinueWithOnMainThread(Task =>
         {
@@ -42,7 +41,6 @@ public class FirestoreAuth : MonoBehaviour
 
             if (snapshot.Exists)
             {
-                // DocumentSnapshot을 딕셔너리로 변환
                 Dictionary<string, object> userData = snapshot.ToDictionary();
 
                 if (userData.TryGetValue("password", out object passwordObj))
@@ -52,7 +50,6 @@ public class FirestoreAuth : MonoBehaviour
                     if (userData.TryGetValue("usertype", out object usertypeObj))
                     {
                         bool usertype = (bool)usertypeObj;
-                        // password 비교 및 로그인 화면 전환
                         if (password == DBpassword)
                         {
                             if (!usertype)
