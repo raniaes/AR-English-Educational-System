@@ -1,10 +1,11 @@
 # AR-English-Educational-System
 Introduction : The aim is to develop an AR educational system to revolutionize the learning experience and improve student achievement and engagement.
 
+Development Environment
 Development Framework : Unity  
-AR Development Environment : AR Foundation, ARCore  
+AR Development Tool : AR Foundation, ARCore  
 Database : FireStore  
-API : STTS (Speech-To-Text in Unity Asset Store)
+API : STTS (Speech-To-Text in Unity Asset Store)  
 AR Technology : Markerless, Image-Tracking
 
 Main Function  
