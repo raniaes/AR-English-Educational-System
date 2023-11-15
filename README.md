@@ -27,5 +27,5 @@ Start system
 1. Connect an Android smartphone to a computer  using a USB port
 2. Click build and run button in the build settings
 3. Set APK file fabrication path and save
-4. system execution in an android device
+4. System execution in an android device
 
