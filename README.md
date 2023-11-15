@@ -1,5 +1,5 @@
 # AR-English-Educational-System
-Development Framework : Unity \w
-AR Development Environment : AR Foundation, ARCore \w
-Database : FireStore \w
+Development Framework : Unity  
+AR Development Environment : AR Foundation, ARCore  
+Database : FireStore  
 AR Technology : Markerless, Image-Tracking
