@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using distriqt.plugins.vibration;
+using UnityEngine.EventSystems;
 
 public class showstudent : MonoBehaviour
 {
@@ -86,6 +88,19 @@ public class showstudent : MonoBehaviour
                 PlayerPrefs.Save();
                 SceneManager.LoadScene("studentachievement", LoadSceneMode.Single);
             });
+
+            // Button에 진동 이벤트 처리를 추가
+            EventTrigger trigger = buttonObject.GetComponent<EventTrigger>();
+            if (trigger == null)
+            {
+                trigger = buttonObject.AddComponent<EventTrigger>();
+            }
+
+            // PointerDown 이벤트에 대한 이벤트 핸들러 추가
+            EventTrigger.Entry entry = new EventTrigger.Entry();
+            entry.eventID = EventTriggerType.PointerDown;
+            entry.callback.AddListener((data) => { Vibration.Instance.Vibrate(100); });
+            trigger.triggers.Add(entry);
 
             //get student name
             DocumentReference userRef = db.Collection("user").Document(studentName);

@@ -14,6 +14,15 @@ public class AudioPlayOnClick : MonoBehaviour
 
     public void PlayAudio()
     {
+        AudioSource[] audioSources = FindObjectsOfType<AudioSource>();
+        foreach (AudioSource audioSource in audioSources)
+        {
+            if (audioSource.isPlaying)
+            {
+                audioSource.Stop();
+            }
+        }
+
         audioSource.clip = audioClip;
         audioSource.Play();
     }

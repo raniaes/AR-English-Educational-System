@@ -10,8 +10,11 @@ public class FirestoreAuth : MonoBehaviour
 {
     public InputField IDInput;
     public InputField passwordInput;
+    private AudioSource loginsound;
 
     private FirebaseFirestore db;
+
+    [SerializeField] private AudioClip[] audioClip;
 
     void Start()
     {
@@ -20,6 +23,9 @@ public class FirestoreAuth : MonoBehaviour
             FirebaseApp app = FirebaseApp.DefaultInstance;
             db = FirebaseFirestore.GetInstance(app);
         });
+
+        loginsound = GetComponent<AudioSource>();
+        DontDestroyOnLoad(gameObject);
     }
 
     public void Login()
@@ -28,12 +34,20 @@ public class FirestoreAuth : MonoBehaviour
         string password = passwordInput.text;
         bool usertype;
 
+        if (string.IsNullOrEmpty(ID))
+        {
+            loginsound.clip = audioClip[1];
+            loginsound.Play();
+        }
+
         DocumentReference userRef = db.Collection("user").Document(ID);
         userRef.GetSnapshotAsync().ContinueWithOnMainThread(Task =>
         {
             if (Task.IsFaulted)
             {
                 Debug.LogError("Failed to get user document: " + Task.Exception);
+                loginsound.clip = audioClip[1];
+                loginsound.Play();
                 return;
             }
 
@@ -54,6 +68,8 @@ public class FirestoreAuth : MonoBehaviour
                         {
                             if (!usertype)
                             {
+                                loginsound.clip = audioClip[2];
+                                loginsound.Play();
                                 PlayerPrefs.SetString("PlayerID", ID);
                                 PlayerPrefs.Save();
                                 Debug.Log("Learner Login Success.");
@@ -61,6 +77,8 @@ public class FirestoreAuth : MonoBehaviour
                             }
                             else
                             {
+                                loginsound.clip = audioClip[0];
+                                loginsound.Play();
                                 PlayerPrefs.SetString("PlayerID", ID);
                                 PlayerPrefs.Save();
                                 Debug.Log("Educator Login Success.");
@@ -69,21 +87,29 @@ public class FirestoreAuth : MonoBehaviour
                         }
                         else
                         {
+                            loginsound.clip = audioClip[1];
+                            loginsound.Play();
                             return;
                         }
                     }
                     else
                     {
+                        loginsound.clip = audioClip[1];
+                        loginsound.Play();
                         Debug.LogError("UserType field not found in the document.");
                     }
                 }
                 else
                 {
+                    loginsound.clip = audioClip[1];
+                    loginsound.Play();
                     Debug.LogError("Password field not found in the document.");
                 }
             }
             else
             {
+                loginsound.clip = audioClip[1];
+                loginsound.Play();
                 Debug.LogError("User document does not exist.");
             }
         });

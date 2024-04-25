@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using distriqt.plugins.vibration;
 
 [RequireComponent(typeof(ARAnchorManager))]
 [RequireComponent(typeof(ARRaycastManager))]
@@ -15,7 +16,13 @@ public class ARtutorial : MonoBehaviour
 
     public GameObject circle1;
     public GameObject circle2;
+    public GameObject circle3;
+    public GameObject circle4;
     public Text infotext;
+
+    private AudioSource audioSource;
+
+    [SerializeField] private AudioClip audioClip;
 
     public GameObject AnchorPrefab
     {
@@ -30,6 +37,11 @@ public class ARtutorial : MonoBehaviour
             Destroy(anchor);
         }
         m_AnchorPoints.Clear();
+    }
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Awake()
@@ -71,6 +83,19 @@ public class ARtutorial : MonoBehaviour
             else
             {
                 m_AnchorPoints.Add(anchor);
+                Vibration.Instance.Vibrate(100);
+
+                AudioSource[] audioSources = FindObjectsOfType<AudioSource>();
+                foreach (AudioSource audioSource in audioSources)
+                {
+                    if (audioSource.isPlaying)
+                    {
+                        audioSource.Stop();
+                    }
+                }
+
+                audioSource.clip = audioClip;
+                audioSource.Play();
 
                 if (circle1 != null)
                 {
@@ -80,10 +105,18 @@ public class ARtutorial : MonoBehaviour
                 {
                     circle2.SetActive(true);
                 }
+                if (circle3 != null)
+                {
+                    circle3.SetActive(true);
+                }
+                if (circle4 != null)
+                {
+                    circle4.SetActive(true);
+                }
 
                 if (infotext != null)
                 {
-                    infotext.text = "A button will be created in the red circle, the button can be used to interact with the system.";
+                    infotext.text = "buttons will be created in the red circles, buttons can be used to interact with the system.\nClick circle.";
                 }
             }
         }

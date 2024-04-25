@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 2459638923488775648}
   - component: {fileID: 3710799341259621617}
   - component: {fileID: -9156590430954247166}
+  - component: {fileID: -3506314944132419529}
   m_Layer: 5
   m_Name: stdentbtn
   m_TagString: Untagged
@@ -227,3 +228,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
+--- !u!114 &-3506314944132419529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5954991506225440218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls: []

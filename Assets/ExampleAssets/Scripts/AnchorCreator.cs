@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using distriqt.plugins.vibration;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
@@ -13,8 +14,12 @@ public class AnchorCreator : MonoBehaviour
     GameObject m_AnchorPrefab;
 
     public GameObject soundbtn;
+    public GameObject descripbtn;
     public GameObject speechbtn;
     private float initialBatteryLevel;
+    private AudioSource audioSource;
+
+    [SerializeField] private AudioClip audioClip;
 
     public GameObject AnchorPrefab
     {
@@ -25,6 +30,8 @@ public class AnchorCreator : MonoBehaviour
     void Start()
     {
         initialBatteryLevel = UnityEngine.SystemInfo.batteryLevel;
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void RemoveAllAnchors()
@@ -75,6 +82,22 @@ public class AnchorCreator : MonoBehaviour
             else
             {
                 m_AnchorPoints.Add(anchor);
+                Vibration.Instance.Vibrate(100);
+
+                if (!speechbtn.activeSelf)
+                {
+                    AudioSource[] audioSources = FindObjectsOfType<AudioSource>();
+                    foreach (AudioSource audioSource in audioSources)
+                    {
+                        if (audioSource.isPlaying)
+                        {
+                            audioSource.Stop();
+                        }
+                    }
+
+                    audioSource.clip = audioClip;
+                    audioSource.Play();
+                }
 
                 float frameRate = 1.0f / Time.deltaTime;
                 Debug.Log("Frame Rate: " + frameRate);
@@ -85,6 +108,10 @@ public class AnchorCreator : MonoBehaviour
                 if (soundbtn != null) 
                 { 
                     soundbtn.SetActive(true);
+                }
+                if (descripbtn != null)
+                {
+                    descripbtn.SetActive(true);
                 }
                 if (speechbtn != null) 
                 { 

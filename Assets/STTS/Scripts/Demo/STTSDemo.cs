@@ -13,6 +13,7 @@ using STTSCore.Utility;
 public class STTSDemo : MonoBehaviour, STTSCallback
 {
     public Text sttResultText;
+    public Text sttResultText2;
 
     private STTS stts;
 
@@ -69,10 +70,12 @@ public class STTSDemo : MonoBehaviour, STTSCallback
             if (result.ToLower() == sttResultText.text.ToLower())
             {
                 sttResultText.color = Color.green;
+                sttResultText2.color = Color.green;
             }
             else
             {
                 sttResultText.color = Color.red;
+                sttResultText2.color = Color.red;
                 //Invoke("STTEvent", 0.5f);
             }
         }
@@ -83,6 +86,7 @@ public class STTSDemo : MonoBehaviour, STTSCallback
     {
         Debug.Log("[Exception] Error: " + error);
         sttResultText.color = Color.red;
+        sttResultText2.color = Color.red;
         //Invoke("STTEvent", 0.5f);
     }
 }

@@ -10,6 +10,9 @@ public class tutorialtomain : MonoBehaviour
 {
     public Text IDtext;
     private FirebaseFirestore db;
+    private AudioSource audioSource;
+
+    [SerializeField] private AudioClip audioClip;
 
     void Start()
     {
@@ -18,6 +21,9 @@ public class tutorialtomain : MonoBehaviour
             FirebaseApp app = FirebaseApp.DefaultInstance;
             db = FirebaseFirestore.GetInstance(app);
         });
+
+        audioSource = GetComponent<AudioSource>();
+        DontDestroyOnLoad(gameObject);
     }
 
     public void movescene()
@@ -45,6 +51,18 @@ public class tutorialtomain : MonoBehaviour
                     bool usertype = (bool)usertypeObj;
                     if (!usertype)
                     {
+                        AudioSource[] audioSources = FindObjectsOfType<AudioSource>();
+                        foreach (AudioSource audioSource in audioSources)
+                        {
+                            if (audioSource.isPlaying)
+                            {
+                                audioSource.Stop();
+                            }
+                        }
+
+                        audioSource.clip = audioClip;
+                        audioSource.Play();
+
                         SceneManager.LoadScene("studentmain", LoadSceneMode.Single);
                     }
                     else

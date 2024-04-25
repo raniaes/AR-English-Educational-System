@@ -105,6 +105,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using distriqt.plugins.vibration;
 
 [RequireComponent(typeof(ARAnchorManager))]
 [RequireComponent(typeof(ARRaycastManager))]
@@ -118,6 +119,9 @@ public class Anchorsenario : MonoBehaviour
     GameObject m_AnchorPrefab2;
 
     public GameObject startbtn;
+    private AudioSource audioSource;
+
+    [SerializeField] private AudioClip audioClip;
 
     public GameObject AnchorPrefab1
     {
@@ -138,6 +142,11 @@ public class Anchorsenario : MonoBehaviour
             Destroy(anchor);
         }
         m_AnchorPoints.Clear();
+    }
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Awake()
@@ -180,7 +189,24 @@ public class Anchorsenario : MonoBehaviour
             {
                 m_AnchorPoints.Add(anchor1);
                 m_AnchorPoints.Add(anchor2);
-                startbtn.SetActive(true);
+                if (!startbtn.activeSelf)
+                {
+                    Vibration.Instance.Vibrate(100);
+
+                    AudioSource[] audioSources = FindObjectsOfType<AudioSource>();
+                    foreach (AudioSource audioSource in audioSources)
+                    {
+                        if (audioSource.isPlaying)
+                        {
+                            audioSource.Stop();
+                        }
+                    }
+
+                    audioSource.clip = audioClip;
+                    audioSource.Play();
+
+                    startbtn.SetActive(true);
+                }
             }
         }
     }

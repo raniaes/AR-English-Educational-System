@@ -9,9 +9,12 @@ using UnityEngine.UI;
 public class Addteacher : MonoBehaviour
 {
     private FirebaseFirestore db;
+    private AudioSource addsound;
 
     public InputField teacherNameInput;
     public Text studentname;
+
+    [SerializeField] private AudioClip[] audioClip;
 
     private void Start()
     {
@@ -20,17 +23,29 @@ public class Addteacher : MonoBehaviour
             FirebaseApp app = FirebaseApp.DefaultInstance;
             db = FirebaseFirestore.GetInstance(app);
         });
+
+        addsound = GetComponent<AudioSource>();
+        DontDestroyOnLoad(gameObject);
     }
 
     public void AddStudentToTeacherOnClick()
     {
         string teacherName = teacherNameInput.text;
 
+        if (string.IsNullOrEmpty(teacherName))
+        {
+            addsound.clip = audioClip[1];
+            addsound.Play();
+            return;
+        }
+
         DocumentReference userRef = db.Collection("user").Document(teacherName);
         userRef.GetSnapshotAsync().ContinueWithOnMainThread(Task =>
         {
             if (Task.IsFaulted)
             {
+                addsound.clip = audioClip[1];
+                addsound.Play();
                 Debug.LogError("Failed to get user document: " + Task.Exception);
                 return;
             }
@@ -60,27 +75,37 @@ public class Addteacher : MonoBehaviour
                         {
                             if (updateTask.IsCompleted)
                             {
+                                addsound.clip = audioClip[0];
+                                addsound.Play();
                                 Debug.Log($"student {studentName} add.");
                                 SceneManager.LoadScene("studentmain", LoadSceneMode.Single);
                             }
                             else if (updateTask.IsFaulted)
                             {
+                                addsound.clip = audioClip[1];
+                                addsound.Play();
                                 Debug.LogError($"Fault: {updateTask.Exception}");
                             }
                         });
                     }
                     else
                     {
+                        addsound.clip = audioClip[1];
+                        addsound.Play();
                         Debug.LogError("this is not teacher.");
                     }
                 }
                 else
                 {
+                    addsound.clip = audioClip[1];
+                    addsound.Play();
                     Debug.LogError("UserType field not found in the document.");
                 }
             }
             else
             {
+                addsound.clip = audioClip[1];
+                addsound.Play();
                 Debug.LogError("User document does not exist.");
             }
         });

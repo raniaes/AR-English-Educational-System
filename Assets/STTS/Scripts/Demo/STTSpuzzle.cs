@@ -51,7 +51,7 @@ public class STTSpuzzle : MonoBehaviour, STTSCallback
 
     private string GenerateRandomSentence()
     {
-        string[] shuffledWords = ShuffleArray(words);
+        /*string[] shuffledWords = ShuffleArray(words);
 
         string sentence = "";
         for (int i = 0; i < shuffledWords.Length; i++)
@@ -70,7 +70,9 @@ public class STTSpuzzle : MonoBehaviour, STTSCallback
                 sentence += shuffledWords[i] + " ";
             }
             sentence = sentence.Trim();
-        }
+        }*/
+
+        string sentence = words[3] + " " + words[1] + " " + words[2] + " " + words[0];
 
         return sentence;
     }
