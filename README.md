@@ -1,12 +1,12 @@
 # AR-English-Educational-System
-Introduction : This system makes it easy for learners to learn English education through AR and allows educators to monitor learners' achievements in real time.
+Introduction : This system makes it easy for learners including students with disability to learn English education through AR and allows educators to monitor learners' achievements in real time.
 
 
 Development Environment
 1. Development Framework : Unity
 2. AR Development Tool : AR Foundation, ARCore
 3. Database : FireStore
-4. API : STTS (Speech-To-Text in Unity Asset Store)
+4. API : STTS (Speech-To-Text in Unity Asset Store), Vibration feature (Unity Asset Store)
 5. AR Technology : Markerless, Image-Tracking
 
 
