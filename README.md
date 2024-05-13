@@ -30,8 +30,8 @@ Start System
 4. System execution in an android device
 
 
-Vocabulary cards path for Image Tracking Test
-  AR-English-Educational-System\Assets\image
-  Coffeeword.jpg
-  Butterflyword.jpg
-  Watermelonword.jpg
+Vocabulary cards path for Image Tracking Test<br>
+  AR-English-Educational-System\Assets\image<br>
+  Coffeeword.jpg<br>
+  Butterflyword.jpg<br>
+  Watermelonword.jpg<br>
