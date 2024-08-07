@@ -30,6 +30,11 @@ Introduction : This system makes it easy for learners including students with di
 4. System execution in an android device
 
 
+## Program Description
+1. I have included a thesis that provides an overview of the "AR-Educational-System" program. Please refer to the `Master Thesis.docx` file for detailed information about the system.
+2. Asset: This folder contains all the source codes of the project.
+
+
 ## Vocabulary cards path for Image Tracking Test<br>
 AR-English-Educational-System\Assets\image<br>
 Coffeeword.jpg<br>
@@ -37,6 +42,4 @@ Butterflyword.jpg<br>
 Watermelonword.jpg<br>
 
 
-## Program Description
-1. I have included a thesis that provides an overview of the "AR-Educational-System" program. Please refer to the `Master Thesis.docx` file for detailed information about the system.
-2. Asset: This folder contains all the source codes of the project.
+
