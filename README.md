@@ -31,7 +31,7 @@ Introduction : This system makes it easy for learners including students with di
 
 
 ## Program Description
-1. I have included a thesis that provides an overview of the "AR-Educational-System" program. Please refer to the [Master Thesis](./Master Thesis.dotc) file for detailed information about the system.
+1. I have included a thesis that provides an overview of the "AR-Educational-System" program. Please refer to the [Master Thesis](./Master Thesis.docx) file for detailed information about the system.
 2. Asset: This folder contains all the source codes of the project.
 
 
